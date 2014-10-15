@@ -48,19 +48,19 @@ def main():
         kprint('github path format is possibly wrong. should be `user/repo`')
         parser.exit(1, parser.format_help())
 
-    if (args.name):
-      repo = args.name
 
-    base = os.path.join(args.base, repo)
+    project = args.name if (args.name) else repo
+
+    base = os.path.join(args.base, project)
     at_base = lambda folder: os.path.join(base, folder)
 
     if os.path.exists(base):
-      kprint('the project %s already exists. please specify another project folder' % repo)
+      kprint('the project %s already exists. please specify another project folder' % project)
       return
 
     origin = args.origin
 
-    kprint('cloning %s boilerplate as %s' % (repo, origin))
+    kprint('cloning %s to %s boilerplate as %s' % (repo, project, origin))
     git('clone', 'https://github.com/%s/%s' % (user, repo), base, '-o', origin)
 
     if args.nogit:
@@ -70,7 +70,7 @@ def main():
       kprint('keeping `.git` folder at `%s` origin' % origin)
 
     if args.noboot:
-      kprint('.kurye file won\'t be run')
+      kprint('%s/.kurye file won\'t be run' % project)
     else:
       boot = at_base('.kurye')
       kprint('trying to run .kurye boot file')
