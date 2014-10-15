@@ -16,25 +16,25 @@ pip install kurye
 kurye user/repo
 ```
 
-### Change project name
+#### Change project name
 
 ```bash
 kurye user/repo -n PROJECT_NAME
 ```
 
-### Do not run `.kurye` file on the project.
+#### Do not run `.kurye` file on the project.
 
 ```bash
 kurye user/repo --noboot
 ```
 
-### Remove `.git` repository
+#### Remove `.git` repository
 
 ```bash
 kurye user/repo --nogit
 ```
 
-### Change origin name (`upstream` by default)
+#### Change origin name (`upstream` by default)
 
 Using this with `--nogit` option won't make sense.
 
@@ -42,11 +42,15 @@ Using this with `--nogit` option won't make sense.
 kurye user/repo -o ORIGIN_NAME
 ```
 
-### Change base directory
+#### Change base directory
 
 ```bash
 kurye user/repo -b ~/MyProjects
 ```
+
+## License
+
+MIT.
 
 ## Name
 
