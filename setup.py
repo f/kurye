@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
   name='kurye',
-  version='0.0.4',
+  version='0.0.5',
   description='simple github cloner for boilerplate projects',
   url='https://github.com/f/kurye',
   author='Fatih Kadir Akin',
