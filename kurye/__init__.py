@@ -62,6 +62,6 @@ def main():
       boot = at_base('.kurye')
       kprint('trying to run .kurye boot file')
       if os.path.exists(boot):
-        subprocess.Popen([boot])
+        subprocess.Popen(['/bin/bash', boot], cwd=base)
       else:
         kprint('boot file not found, passing.')
