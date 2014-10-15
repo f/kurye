@@ -1,4 +1,4 @@
-# Kurye: GitHub Project Cloner for BoilerPlate Projects
+# Kurye: GitHub Project Cloner for Boilerplate Projects
 
 Kurye clones boilerplate repositories and runs specified commands on the `.kurye` file.
 By default it clones the repo as `upstream` origin.
