@@ -1,6 +1,7 @@
 import argparse
 import os
 import shutil
+import signal
 import subprocess
 
 class bcolors:
@@ -75,6 +76,6 @@ def main():
       boot = at_base('.kurye')
       kprint('trying to run .kurye boot file')
       if os.path.exists(boot):
-        subprocess.Popen(['/bin/bash', boot], cwd=base)
+        subprocess.call(boot, cwd=base)
       else:
         kprint('boot file not found, passing.')
