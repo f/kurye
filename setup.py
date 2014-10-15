@@ -13,6 +13,7 @@ setup(
     'Intended Audience :: Developers',
   ],
   keywords='github install clone',
+  py_modules=['kurye'],
   entry_points={
       'console_scripts': [
             'kurye=kurye:main',
