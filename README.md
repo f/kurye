@@ -8,6 +8,7 @@ By default it clones the repo as `upstream` origin.
 ```bash
 pip install kurye
 ```
+---
 
 ## Usage
 
