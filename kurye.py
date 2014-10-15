@@ -21,8 +21,8 @@ def main():
 
     parser = argparse.ArgumentParser(
             description='simple github cloner for boilerplate projects')
-    parser.add_argument('user/repo',
-            help='user/repo of the repo url https://github.com/user/repo')
+    parser.add_argument('github_path',
+            help='github path of the repo url, looks like "user/path"')
     parser.add_argument('-b', '--base',
             help='base path to clone the project',
             default=os.getcwd())
@@ -37,9 +37,9 @@ def main():
     args = parser.parse_args()
 
     try:
-        user, repo = args['user/repo'].split('/', 1)
+        user, repo = args.github_path.split('/', 1)
     except ValueError:
-        kprint('user/repo format is possibly wrong')
+        kprint('github path format is possibly wrong. should be `user/repo`')
         parser.exit(1, parser.format_help())
 
     base = os.path.join(args.base, repo)
