@@ -29,10 +29,16 @@ def main():
     parser.add_argument('-o', '--origin',
             help='origin of repo, "upstream" by default. requires -g',
             default='upstream')
+    parser.add_argument('-n', '--name',
+            help='name of the project. repo name by default')
     parser.add_argument('--nogit',
-            help='remove .git folder')
+            help='remove .git folder',
+            action='store_true',
+            default=False)
     parser.add_argument('--noboot',
-            help='do not boot the project')
+            help='do not boot the project',
+            action='store_true',
+            default=False)
 
     args = parser.parse_args()
 
@@ -41,6 +47,9 @@ def main():
     except ValueError:
         kprint('github path format is possibly wrong. should be `user/repo`')
         parser.exit(1, parser.format_help())
+
+    if (args.name):
+      repo = args.name
 
     base = os.path.join(args.base, repo)
     at_base = lambda folder: os.path.join(base, folder)
@@ -57,8 +66,12 @@ def main():
     if args.nogit:
       kprint('removing git folder')
       shutil.rmtree(at_base('.git'))
+    else:
+      kprint('keeping `.git` folder at `%s` origin' % origin)
 
     if args.noboot:
+      kprint('.kurye file won\'t be run')
+    else:
       boot = at_base('.kurye')
       kprint('trying to run .kurye boot file')
       if os.path.exists(boot):
