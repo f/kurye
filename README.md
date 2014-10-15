@@ -28,7 +28,7 @@ kurye user/repo -n PROJECT_NAME
 kurye user/repo --noboot
 ```
 
-#### Remove `.git` repository
+#### Remove `.git` folder after clone
 
 ```bash
 kurye user/repo --nogit
