@@ -1,7 +1,6 @@
 import argparse
 import os
 import shutil
-import signal
 import subprocess
 
 class bcolors:
@@ -56,8 +55,8 @@ def main():
     at_base = lambda folder: os.path.join(base, folder)
 
     if os.path.exists(base):
-      kprint('the project %s already exists. please specify another project folder' % project)
-      return
+        kprint('the project %s already exists. please specify another project folder' % project)
+        return
 
     origin = args.origin
 
@@ -65,17 +64,17 @@ def main():
     git('clone', 'https://github.com/%s/%s' % (user, repo), base, '-o', origin)
 
     if args.nogit:
-      kprint('removing git folder')
-      shutil.rmtree(at_base('.git'))
+        kprint('removing git folder')
+        shutil.rmtree(at_base('.git'))
     else:
-      kprint('keeping `.git` folder at `%s` origin' % origin)
+        kprint('keeping `.git` folder at `%s` origin' % origin)
 
     if args.noboot:
-      kprint('%s/.kurye file won\'t be run' % project)
+        kprint('%s/.kurye file won\'t be run' % project)
     else:
-      boot = at_base('.kurye')
-      kprint('trying to run .kurye boot file')
-      if os.path.exists(boot):
-        subprocess.call(boot, cwd=base)
-      else:
-        kprint('boot file not found, passing.')
+        boot = at_base('.kurye')
+        kprint('trying to run .kurye boot file')
+        if os.path.exists(boot):
+            subprocess.call(boot, cwd=base)
+        else:
+            kprint('boot file not found, passing.')
